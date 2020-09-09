@@ -6,10 +6,9 @@ body {
   background-color: #282c34;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0px 20px;
 }
-* {
- padding: 0px 20px;
-}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

@@ -1,0 +1,17 @@
+.search_wrap {
+    display: flex;
+}
+.search_input {
+    font-family: 'Courier New' monospace;
+    font-size: 20px;
+    min-width: 700px;
+    min-height: 40px;
+    border-radius: 6px;
+
+    border: none;
+    outline: none;
+    transition: 0.4s ease-out;
+}
+.search_input:focus {
+    box-shadow: 0px 0px 0px 2px rgb(255, 251, 39);
+}
