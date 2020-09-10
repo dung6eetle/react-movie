@@ -10,8 +10,32 @@ function App() {
   const [state, setState] = useState({
     search: "",
     results: [],
-    selected: {}
+    selected: {},
+    favorite: []
   })
+  const setLike = (id) => {
+    setState(state => {
+      const results = state.results.map(item => {
+        if(item.id == id) {
+          return {
+            ...item,
+            liked: !item.liked
+          }
+        } else {
+          return item
+        }
+      });
+      alert(state.results.find(r => r.id === id).original_title)
+      console.log(results)
+      console.log('favorite:', state.favorite)
+      return {
+        ...state,
+        favorite: results.filter(movie => movie.liked),
+        results: results
+      };
+    }
+    )
+  }
   function generateUrl(path) {
     const url = `https://api.themoviedb.org/3${path}?api_key=132f3ea57c4e8fc725aef7f0904cdf6c`
     return url
@@ -22,19 +46,17 @@ function App() {
      setState(prevState => {
        return {...prevState, search: search}
      })
-     console.log('value:', search)
   }
   const search = (e) => {
     let path = '/search/movie'
     const newUrl = generateUrl(path) + '&query=' + state.search
     if (e.key === "Enter") {
       Axios(newUrl).then(({data}) => {
+        data.results.map(film => film.liked = false)
         let results = data.results
         setState(prevState => {
-          console.log(results, 'wewew')
           return {...prevState, results}
         })
-        console.log('movies:',data)
       })
     }
   }
@@ -62,10 +84,11 @@ function App() {
         <h1>Movie<span>Free</span>Market</h1>
         <Search handleInput={handleInput} search={search}/>
       </header>
-      <Items results={state.results} openPopup={openPopup}/>
-      {(typeof state.selected.original_title != "undefined") 
+      <Items results={state.results} openPopup={openPopup} setLike={setLike}/>
+      {state.selected?.original_title
       ? <Popup selected={state.selected} closePopup={closePopup}/> 
       : false}
+      
     </div>
   );
 }

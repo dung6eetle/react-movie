@@ -3,11 +3,10 @@
     width: 33.333%;
     padding: 20px;
     display: flex;
-    flex-direction: column;
-    cursor: pointer; 
-
+    flex-direction: column; 
 }
 .result_title {
+    cursor: pointer;
     position: relative;
     font-size: 20px;
     font-weight: 600;
@@ -23,7 +22,19 @@
 .result_img {
     display: block;
     width: 100%;
+    cursor: pointer;
 }
+.likeBlock {
+    max-width: 50px;
+}
+.like {
+    cursor: pointer;
+    max-height: 50px;
+    align-content: center;
+}
+
+/* POPUP */
+
 .popup {
     position: fixed;
     top: 0;
