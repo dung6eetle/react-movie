@@ -1,0 +1,17 @@
+.movie_container {
+ padding: 20px 70px;
+ display: flex;
+ flex-flow: column;
+
+ font-family:source-code-pro, monospace;
+  font-size: 20px;
+  color: #fff;
+}
+.movie_title {
+    font-size: 30px;
+    color:rgb(255, 251, 39);
+    padding-bottom: 15px;
+}
+.movie_discription {
+    font-size: 20px;
+}

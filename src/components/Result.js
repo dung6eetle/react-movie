@@ -2,7 +2,7 @@ import React from "react";
 import classes from "../style/Result.module.css";
 import moviePhoto from "../img/film.jpg";
 import like from "../img/heart.svg";
-import liketrue from "../img/heart2.svg";
+import liketrue from "../img/heart-success.svg";
 
 function Result({ id, result, openPopup, likeCounter, setLikeCounter }) {
   const imgUrl = "https://image.tmdb.org/t/p/w500";

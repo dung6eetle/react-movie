@@ -1,10 +1,13 @@
 import React,{useState} from 'react';
+import { Route } from "react-router-dom";
 import './App.css';
 import Search from './components/Search';
 import Items from './components/Items'
+import Popup from './components/Popup';
+import Favorite from './components/Favorite'
+import Navbar from './components/Navbar'
 
 import Axios from 'axios';
-import Popup from './components/Popup';
 
 function App() {
   const [state, setState] = useState({
@@ -25,7 +28,7 @@ function App() {
           return item
         }
       });
-      alert(state.results.find(r => r.id === id).original_title)
+      // alert(state.results.find(r => r.id === id).original_title)
       console.log(results)
       console.log('favorite:', state.favorite)
       return {
@@ -82,12 +85,16 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Movie<span>Free</span>Market</h1>
-        <Search handleInput={handleInput} search={search}/>
+        <Route path="/home" render={()=><Search handleInput={handleInput} search={search}/>}/>
+        <Navbar/>
       </header>
-      <Items results={state.results} openPopup={openPopup} setLike={setLike}/>
+      <Route path="/home" render={() => <Items results={state.results} openPopup={openPopup} setLike={setLike}/>}/>
+
       {state.selected?.original_title
       ? <Popup selected={state.selected} closePopup={closePopup}/> 
       : false}
+
+      <Route path="/favorite" render={() => <Favorite favorite={state.favorite}/>} />
       
     </div>
   );
